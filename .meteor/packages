@@ -7,3 +7,9 @@ standard-app-packages
 autopublish
 insecure
 preserve-inputs
+bootstrap-3
+accounts-ui-bootstrap-3
+paginated-subscription
+accounts-facebook
+accounts-password
+accounts-base

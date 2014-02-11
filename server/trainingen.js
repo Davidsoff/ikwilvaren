@@ -1,0 +1,1 @@
+Trainingen = new Meteor.Collection("trainingen")
