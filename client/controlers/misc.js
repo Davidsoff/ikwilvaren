@@ -3,12 +3,16 @@ Accounts.ui.config({
 });
 
 if (Meteor.isClient) {
-
+	var click = 0
   Template.hello.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-      	console.log("You pressed the button");
-    }
+    'click input' : function() {
+  		click++;
+  		console.log(click);
+  		var text = document.getElementById("click");
+  		text.innerHTML = "er is "+click+" keer geklikt";
+		}
   });
 }
+
+
+
