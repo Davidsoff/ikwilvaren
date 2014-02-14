@@ -13,3 +13,6 @@ paginated-subscription
 accounts-facebook
 accounts-password
 accounts-base
+accounts-github
+accounts-google
+email

@@ -1,0 +1,78 @@
+<template name="outings">
+	<div class="page-header">
+		<h1>
+			{{#if openNav}}
+				Open outings 
+			{{else}}
+				Mijn outings
+			{{/if}}
+			<button class="btn btn-primary pull-right" data-toggle="modal" data-target="#newOutingModal">
+  				Nieuwe outing
+			</button>
+		</h1>
+	</div>
+	<div id="lijst">
+		{{#each outing}}
+			<div class="well">
+				<strong>{{title}}</strong><br/>
+				{{description}}<br/>
+				{{#if roei}}
+					Er zijn nog {{roeiers}} roeiers nodig.<br/>
+				{{/if}}
+				{{#if needStuur}}
+					Er is nog een stuur nodig.<br/>
+				{{/if}} 
+				{{#if needCoach}}
+					Er is nog een coach nodig.<br/>
+				{{/if}} 
+			</div>
+		{{/each}}
+	</div>
+	<div>
+		<input type="button" class="btn btn-info" id="load" value="meer laden">
+	</div>
+	{{> newOuting}}
+</template>
+
+<template name="newOuting">
+	<div class="modal fade" id="newOutingModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Nieuwe outing</h4>
+				</div>
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<label for="titel">Titel</label>
+							<input type="email" class="form-control" id="titel" autofocus>
+						</div>
+						<div class="form-group">
+							<label for="description">Beschrijving</label>
+							<textarea class="form-control" id="description"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="roeiers">Aantal benodigde reiers</label>
+							<input type="email" class="form-control" id="roeiers">
+						</div>
+						<div class="checkbox">
+							<label>
+								<input id="stuur" type="checkbox"> Er is een stuur nodig.
+							</label>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input id="coach" type="checkbox"> Er is een coach nodig.
+							</label>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Annuleren</button>
+					<button type="button" class="btn btn-success save">Opslaan</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

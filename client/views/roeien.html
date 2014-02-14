@@ -5,11 +5,18 @@
 <body>
 	<div class="container">
 		{{> header }}
-		{{> hello}}
+		{{#if currentUser}}
+			{{> outings}}
+		{{else}}
+			{{> home}}
+		{{/if}}
 	</div>
 </body>
 
-<template name="hello">
+<template name="home">
+	<div class="page-header">
+ 		<h1>Ik wil varen! <small> powered by Meteor</small></h1> 
+	</div>
 	<div class="col-md-12">
 		<p>hallo</p>
 		<p>
@@ -18,7 +25,7 @@
 		</p>
 	</div>
 	<div id="click">
-		er is 0 keer geklikt.
+		de waarde is 0.
 	</div>
 	<div class="col-6-md">
 		<input type="button" class="btn btn-primary btn-block" value="Click" />

@@ -4,15 +4,15 @@
 		    <a class="navbar-brand" href="home">Ik wil varen</a>
 		</div>
 		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li class="active" id="chatNav"><a href="chat">chat</a></li>
-			</ul>
+			{{#if currentUser}}
+				<ul class="nav navbar-nav">
+					<li class="active" id="openNav"><a href="open">open outings</a></li>
+					<li class="inactive" id="ownNav"><a href="open">mijn outings</a></li>
+				</ul>
+			{{/if}}
 		    <ul class="nav navbar-nav navbar-right">
 		      	{{ loginButtons }}
 		    </ul>
 		</div>
-	</div>
-	<div class="page-header">
- 		<h1>Ik wil varen!<small> powered by Meteor</small></h1> 
 	</div>
 </template>

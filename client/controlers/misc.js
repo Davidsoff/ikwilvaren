@@ -2,14 +2,19 @@ Accounts.ui.config({
 	passwordSignupFields: 'USERNAME_AND_EMAIL'
 });
 
+Session.setDefault("page","openNav");
+
 if (Meteor.isClient) {
-	var click = 0
+	var before = 0
+	var prev = 0;
+	var click = 1;
   Template.hello.events({
     'click input' : function() {
-  		click++;
-  		console.log(click);
+    	before = prev;
+    	prev = click;
+  		click= before+prev;
   		var text = document.getElementById("click");
-  		text.innerHTML = "er is "+click+" keer geklikt";
+  		text.innerHTML = "de waarde is "+before+".";
 		}
   });
 }
