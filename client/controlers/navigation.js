@@ -9,9 +9,9 @@ Template.header.events({
 
 Template.outings.helpers({
 	openNav : function() {
-		return (Session.get("page") === "openNav");
+		return Session.equals("page", "openNav");
 	},
 	ownNav : function() {
-		return (Session.get("page") === "ownNav");
+		return Session.equals("page","ownNav");
 	}
 });

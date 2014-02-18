@@ -1,10 +1,10 @@
 <template name="outings">
 	<div class="page-header">
 		<h1>
-			{{#if openNav}}
-				Open outings 
+			{{#if ownNav}}
+				Mijn outings 
 			{{else}}
-				Mijn outings
+				Open outings
 			{{/if}}
 			<button class="btn btn-primary pull-right" data-toggle="modal" data-target="#newOutingModal">
   				Nieuwe outing
@@ -14,17 +14,21 @@
 	<div id="lijst">
 		{{#each outing}}
 			<div class="well">
-				<strong>{{title}}</strong><br/>
-				{{description}}<br/>
-				{{#if roei}}
-					Er zijn nog {{roeiers}} roeiers nodig.<br/>
-				{{/if}}
-				{{#if needStuur}}
-					Er is nog een stuur nodig.<br/>
-				{{/if}} 
-				{{#if needCoach}}
-					Er is nog een coach nodig.<br/>
-				{{/if}} 
+					<strong>{{titel}}</strong>
+					{{#if isOwner}}
+						<button class="btn btn-danger pull-right delete" id={{_id}}>Verwijderen</button>
+					{{/if}}
+					<br/>
+					{{desc}}<br/><br/>
+					{{#if roei}}
+						Er zijn nog {{roeiers}} roeiers nodig. <button class="btn btn-success pull-right">Ik wil roeien</button><br/><br/>
+					{{/if}}
+					{{#if stuur}}
+						Er is nog een stuur nodig. <button class="btn btn-success pull-right">Ik wil sturen</button><br/><br/>
+					{{/if}} 
+					{{#if coach}}
+						Er is nog een coach nodig. <button class="btn btn-success pull-right">Ik wil coachen</button><br/><br/>
+					{{/if}}
 			</div>
 		{{/each}}
 	</div>
@@ -43,18 +47,40 @@
 					<h4 class="modal-title">Nieuwe outing</h4>
 				</div>
 				<div class="modal-body">
-					<form role="form">
+					<div id='alerts'></div>
+					<form role="form" class='form-horizontal'>
 						<div class="form-group">
 							<label for="titel">Titel</label>
-							<input type="email" class="form-control" id="titel" autofocus>
+							<input type='text' class="form-control" id="titel" autofocus>
 						</div>
+						<div class="form-group">
+							<strong>Tijd</strong><br/>
+					       <div class='col-md-6'>
+					            <div class="form-group">
+					                <div class='input-group date' id='tijdInput'>
+					                    <input type='text' class="form-control" data-format="HH:mm" id="tijd"/>
+					                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+					                    </span>
+					                </div>
+					            </div>
+					        </div>
+					        <div class='col-md-6'>
+					            <div class="form-group">
+					                <div class='input-group date' id='datumInput'>
+					                    <input type='text' class="form-control" data-format="DD/MM/YYYY" id="datum"/>
+					                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+					                    </span>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
 						<div class="form-group">
 							<label for="description">Beschrijving</label>
-							<textarea class="form-control" id="description"></textarea>
+							<textarea class="form-control" value="" id="description"></textarea>
 						</div>
 						<div class="form-group">
-							<label for="roeiers">Aantal benodigde reiers</label>
-							<input type="email" class="form-control" id="roeiers">
+							<label for="roeiers">Aantal benodigde roeiers</label>
+							<input type="number" min="0" max="8" class="form-control" id="roeiers" value='0'>
 						</div>
 						<div class="checkbox">
 							<label>

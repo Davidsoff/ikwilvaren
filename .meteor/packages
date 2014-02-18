@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
 insecure
 preserve-inputs
 bootstrap-3
@@ -16,3 +15,5 @@ accounts-base
 accounts-github
 accounts-google
 email
+moment
+bootstrap3-datetimepicker
