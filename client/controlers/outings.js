@@ -20,7 +20,6 @@ Template.newOuting.events({
     	var roeiers = document.getElementById("roeiers").value;
     	var stuur = document.getElementById("stuur").checked;
     	var coach = document.getElementById("coach").checked;
-        console.log("ping");
         
         if(fieldsOk()){
             Meteor.call(
@@ -42,7 +41,6 @@ Template.newOuting.events({
                         $('#description').removeClass('has-error')
                     }
                 });
-            console.log("pong");
         }
 	},
 
